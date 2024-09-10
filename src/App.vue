@@ -8,11 +8,14 @@
     <div :style="{ backgroundColor: boxColor, width: '100px', height: '100px', marginTop: '20px' }"></div>
     <button @click="changeBoxColor">Ubah Warna Box</button>
 
+    <!-- Button untuk mengubah background body -->
+    <button @click="changeBodyBackground">Ubah Background Body</button>
+
     <!-- Image Carousel -->
     <div class="carousel">
-      <button @click="prevImage">back</button>
+      <button @click="prevImage">Back</button>
       <img :src="images[currentImage]" alt="Image Carousel" class="carousel-image">
-      <button @click="nextImage">lanjut</button>
+      <button @click="nextImage">Lanjut</button>
     </div>
   </div>
 </template>
@@ -24,9 +27,9 @@ export default {
       counter: 0,
       boxColor: 'lightblue',
       images: [
-        'https://via.placeholder.com/300?text=Image+1',
-        'https://via.placeholder.com/300?text=Image+2',
-        'https://via.placeholder.com/300?text=Image+3'
+      'https://tse4.mm.bing.net/th?id=OIP.AByOAVvpDfYsF0FXvZeMvQHaKT&pid=Api&P=0&h=180', // Image 1
+        'https://tse1.mm.bing.net/th?id=OIP.XnecSccfyuUTjFU9R8UIqQHaJQ&pid=Api&P=0&h=180',                        // Image 2
+        'https://tse2.mm.bing.net/th?id=OIP.hmsasYCNGcU383IYmtcxTgHaJP&pid=Api&P=0&h=180'  // Image 3
       ],
       currentImage: 0
     };
@@ -38,6 +41,10 @@ export default {
     changeBoxColor() {
       const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
       this.boxColor = randomColor;
+    },
+    changeBodyBackground() {
+      const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      document.body.style.backgroundColor = randomColor;
     },
     prevImage() {
       this.currentImage = (this.currentImage - 1 + this.images.length) % this.images.length;
